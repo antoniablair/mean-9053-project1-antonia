@@ -1,5 +1,7 @@
 #Project Number 1 - CE - 9053
 
+Antonia Blair
+
 ##Steps:
 
 * Create a new git repository from this repository
@@ -16,3 +18,5 @@
 * run bower install to install bower modules
 * run karma start
 * max score 33
+
+
