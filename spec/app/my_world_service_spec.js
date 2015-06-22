@@ -87,8 +87,6 @@ describe("MyWorldService", function() {
     });
   });
 
-  return;
-
   describe("#getPerson", function() {
     var _moe, _shep;
     beforeEach(function() {
@@ -116,6 +114,8 @@ describe("MyWorldService", function() {
       expect(_things).toEqual([paper, rock, scissors]);
     });
   });
+
+  return;
 
   describe("#getThing", function() {
     var _rock;
