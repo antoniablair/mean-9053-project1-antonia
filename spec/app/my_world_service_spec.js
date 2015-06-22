@@ -26,7 +26,7 @@ describe("MyWorldService", function() {
 
     moe = new Person({
       name: "Moe",
-      active: true,
+      active: true
     });
     larry = new Person({
       name: "Larry",
@@ -40,7 +40,7 @@ describe("MyWorldService", function() {
       things: ["Rock"]
     });
     shep = new Person({
-      name: "Shep"
+      name: "Shep",
     });
 
     var people = [moe, larry, curly, shep];
@@ -115,8 +115,6 @@ describe("MyWorldService", function() {
     });
   });
 
-  return;
-
   describe("#getThing", function() {
     var _rock;
     beforeEach(function() {
@@ -149,6 +147,7 @@ describe("MyWorldService", function() {
         returnValue,
         numberOfRocksInStockAfter,
         moeHasARock,
+        test,
         numberOfRocksOwnedAfter;
 
       beforeEach(function() {
@@ -164,9 +163,11 @@ describe("MyWorldService", function() {
         moeHasARock = moe.hasThing("Rock");
         numberOfRocksOwnedAfter = rock.numberOwned;
       });
+
       it("returns true", function() {
         expect(returnValue).toEqual(true);
       });
+
       it("there is one less Rock in Stock", function() {
         expect(numberOfRocksInStockAfter).toEqual(numberOfRocksInStockBefore - 1);
       });
@@ -179,7 +180,10 @@ describe("MyWorldService", function() {
       it("There is one more rocked owned", function() {
         expect(numberOfRocksOwnedAfter).toEqual(numberOfRocksOwnedBefore + 1);
       });
+           
     });
+
+ return;
 
     describe("Giving Moe too many Rocks", function() {
       beforeEach(function() {
