@@ -1,10 +1,13 @@
 /*globals describe beforeEach it expect Thing MyWorldService Person */
+
 describe("MyWorldService", function() {
   var rock, paper, scissors;
   var moe, larry, curly, shep;
   var service;
 
   beforeEach(function() {
+
+    // Thing constructors
     rock = new Thing({
       name: "Rock",
       numberInStock: 2,
@@ -19,6 +22,8 @@ describe("MyWorldService", function() {
       numberInStock: 3
     });
 
+    // Person constructors
+
     moe = new Person({
       name: "Moe",
       active: true,
@@ -27,6 +32,8 @@ describe("MyWorldService", function() {
       name: "Larry",
       active: true
     });
+
+    // Passing in things property, which has a string, Rock
     curly = new Person({
       name: "Curly",
       active: true,
@@ -38,6 +45,7 @@ describe("MyWorldService", function() {
 
     var people = [moe, larry, curly, shep];
     var things = [rock, paper, scissors];
+
     service = new MyWorldService(people, things);
   });
 
@@ -46,7 +54,7 @@ describe("MyWorldService", function() {
       expect(rock.name).toEqual("Rock");
     });
   });
-  
+
   describe("paper", function() {
     it("name is paper", function() {
       expect(paper.name).toEqual("Paper");
@@ -78,6 +86,8 @@ describe("MyWorldService", function() {
       });
     });
   });
+
+  return;
 
   describe("#getPerson", function() {
     var _moe, _shep;
