@@ -8,9 +8,9 @@ function Person(config){
 // }
 
   this.hasThing = function(nameOfThing) {
-  	if(typeof this.things == 'undefined') {
-  		return false;
-  	}
+  	// if(typeof this.things == 'undefined') {
+  	// 	return false;
+  	// }
   	for(var thing in this.things) {
   		if (this.things[thing] == nameOfThing) {
   			return true;

@@ -36,7 +36,7 @@ this.getPerson = function(nameOfPerson) {
   };
 
   this.getThing = function(nameOfThing) {
-   return _.find(this.things, function(thing){return thing.name == nameOfThing});
+    return _.find(this.things, function(thing){return thing.name == nameOfThing});
   }
 
   this.acquireThing = function(nameOfPerson, nameOfThing) {
@@ -59,7 +59,6 @@ this.getPerson = function(nameOfPerson) {
     var thing = this.getThing(nameOfThing);
 
     if (person.hasThing(nameOfThing)) {
-      console.log(person + " has a thing");
       thing.numberInStock++;
       thing.numberOwned--;
       person.things.splice(nameOfThing);
