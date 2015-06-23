@@ -19,10 +19,10 @@ function MyWorldService(people, things){
 	};
 
 // find person, and make their things an empty array
-this.getPerson = function(n) {
+this.getPerson = function(nameOfPerson) {
 	for (var person in people) {
 		var p = people[person];
-		if (p.name == n) {
+		if (p.name == nameOfPerson) {
 			if (p.things === undefined) {
 				p.things = [];
 			}
@@ -36,17 +36,42 @@ this.getPerson = function(n) {
   };
 
   this.getThing = function(nameOfThing) {
-   return _.find(this.Thing, function(thing){return thing.name == nameOfThing});
+   return _.find(this.things, function(thing){return thing.name == nameOfThing});
   }
-}
-//    this.getThing = function() {
-//    	return _.find(this.things, function(thing){return thing.name == thing});
-//  };
-// }
 
-  // this.getThing = function(mything) {
-  // return _.result(_.find(this.things, { 'name': 'Rock' }), 'name');
-  // };
+  this.acquireThing = function(nameOfPerson, nameOfThing) {
+    var person = this.getPerson(nameOfPerson);
+    var thing = this.getThing(nameOfThing);
+
+    if (thing.numberInStock > 0 ) {
+      thing.numberInStock = (thing.numberInStock - 1);
+      thing.numberOwned = (thing.numberOwned + 1);
+      person.things.push(nameOfThing);
+      return true;
+    }
+    else {
+      throw ("No things in stock.");
+    }
+  };
+
+  this.returnThing = function(nameOfPerson, nameOfThing){
+    var person = this.getPerson(nameOfPerson);
+    var thing = this.getThing(nameOfThing);
+
+    if (person.hasThing(nameOfThing)) {
+      console.log(person + " has a thing");
+      thing.numberInStock++;
+      thing.numberOwned--;
+      person.things.splice(nameOfThing);
+      console.log(person.hasThing(nameOfThing));
+      return true;
+    }
+    else {
+      throw ("They don't have that thing to return!");
+    }
+  }
+
+};
 
 MyWorldService.prototype = {
     getPeople : function(){

@@ -183,8 +183,6 @@ describe("MyWorldService", function() {
            
     });
 
- return;
-
     describe("Giving Moe too many Rocks", function() {
       beforeEach(function() {
         service.acquireThing("Moe", "Rock");
