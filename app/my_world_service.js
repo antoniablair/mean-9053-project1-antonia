@@ -59,8 +59,8 @@ this.getPerson = function(nameOfPerson) {
     var thing = this.getThing(nameOfThing);
 
     if (person.hasThing(nameOfThing)) {
-      thing.numberInStock++;
-      thing.numberOwned--;
+      thing.numberInStock = (thing.numberInStock + 1);
+      thing.numberOwned = (thing.numberOwned - 1);
       person.things.splice(nameOfThing);
       console.log(person.hasThing(nameOfThing));
       return true;
@@ -68,6 +68,19 @@ this.getPerson = function(nameOfPerson) {
     else {
       throw ("They don't have that thing to return!");
     }
+  }
+
+  this.getPeopleWhoOwnThing = function(nameOfThing){
+    return _.filter(this.people, function(person){return person.hasThing(nameOfThing);});
+  }
+  this.getPeopleWhoOwnNothing = function(){
+    return _.filter(this.people, function(person){return person.things === undefined });
+  }
+  this.getThingsNotOwned = function(){
+    return _.filter(this.things, function(thing){ return thing.numberOwned === undefined;});
+  }
+  this.getThingsOwned = function(){
+    return _.filter(this.things, function(thing){ return thing.numberOwned > 0 });
   }
 
 };
