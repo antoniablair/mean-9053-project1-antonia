@@ -62,14 +62,14 @@ this.getPerson = function(nameOfPerson) {
       thing.numberInStock = (thing.numberInStock + 1);
       thing.numberOwned = (thing.numberOwned - 1);
       person.things.splice(nameOfThing);
-      console.log(person.hasThing(nameOfThing));
       return true;
     }
     else {
       throw ("They don't have that thing to return!");
     }
-  }
+  };
 
+  // Additional filtering
   this.getPeopleWhoOwnThing = function(nameOfThing){
     return _.filter(this.people, function(person){return person.hasThing(nameOfThing);});
   }

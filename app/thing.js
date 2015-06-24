@@ -19,5 +19,5 @@ function Thing(config){
   	else {
   		return false;
   	}
-  }
+  };
 }
