@@ -43,6 +43,7 @@ this.getPerson = function(nameOfPerson) {
     var person = this.getPerson(nameOfPerson);
     var thing = this.getThing(nameOfThing);
 
+    // If at least 1 thing available, update inventories
     if (thing.numberInStock > 0 ) {
       thing.numberInStock = (thing.numberInStock - 1);
       thing.numberOwned = (thing.numberOwned + 1);
@@ -77,7 +78,7 @@ this.getPerson = function(nameOfPerson) {
     return _.filter(this.people, function(person){return person.things === undefined });
   }
   this.getThingsNotOwned = function(){
-    return _.filter(this.things, function(thing){ return thing.numberOwned === undefined;});
+    return _.filter(this.things, function(thing){ return ((thing.numberOwned < 0) || (thing.numberOwned === undefined));});
   }
   this.getThingsOwned = function(){
     return _.filter(this.things, function(thing){ return thing.numberOwned > 0 });
@@ -88,5 +89,9 @@ this.getPerson = function(nameOfPerson) {
 MyWorldService.prototype = {
     getPeople : function(){
         return _.sortBy(this.people, "name");
+    },
+
+    isActive : function(active) {
+      return active === true;
     }
 };
